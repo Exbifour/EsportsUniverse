@@ -1,0 +1,8 @@
+{
+    "header": {
+      "title": ["Esports Universe", "Всесвіт Кіберспорту"],
+      "disciplines": ["Disciplines", "Дисципліни"],
+      "teams": ["Teams", "Команди"],
+      "games": ["Games", "Ігри"]
+    }
+}

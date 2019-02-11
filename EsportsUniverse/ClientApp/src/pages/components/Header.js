@@ -9,6 +9,10 @@ import MenuItem from '@material-ui/core/MenuItem';
 import Menu from '@material-ui/core/Menu';
 import { Link as RouterLink } from 'react-router-dom'
 import Link from '@material-ui/core/Link';
+import LanguageToggle from './LanguageToggle'
+import { withLocalize } from "react-localize-redux";
+import headerTranslations from "../translations/header.json";
+import { Translate } from "react-localize-redux";
 
 import { withStyles } from '@material-ui/core/styles';
 
@@ -29,14 +33,20 @@ const styles = theme => ({
 });
 
 class Header extends React.Component {
+    constructor(props) {
+      super(props);
+
+      this.props.addTranslation(headerTranslations);
+    }
+
     state = {
       auth: true,
       anchorEl: null,
     };
   
-    handleChange = event => {
-      this.setState({ auth: event.target.checked });
-    };
+    // handleChange = event => {
+    //   this.setState({ auth: event.target.checked });
+    // };
   
     handleMenu = event => {
       this.setState({ anchorEl: event.currentTarget });
@@ -67,21 +77,21 @@ class Header extends React.Component {
                 <MenuIcon />
               </IconButton> */}
               <Typography variant="h6" color="inherit" className={classes.navigation}>
-                Esports Universe
+                <Translate id="header.title" />
               </Typography>
               <Link component={RouterLink} color="inherit" to='/'>
                 <Button variant="text" size='large' color="inherit" className={classes.navigation}>
-                  Disciplines
+                  <Translate id="header.disciplines" />
                 </Button>
               </Link>
               <Link component={RouterLink} color="inherit" to='/teams'>
                 <Button variant="text" size='large' color="inherit" className={classes.navigation}>
-                    Teams
+                  <Translate id="header.teams" />
                 </Button>
               </Link>
               <Link component={RouterLink} color="inherit" to='/games'>
                 <Button variant="text" size='large' color="inherit" className={classes.navigation}>
-                  Games
+                  <Translate id="header.games" />
                 </Button>
               </Link>
               <div className={classes.grow}></div>
@@ -117,6 +127,7 @@ class Header extends React.Component {
                   </Menu>
                 </div>
               )}
+              <LanguageToggle />
             </Toolbar>
           </AppBar>
         </div>
@@ -128,4 +139,4 @@ class Header extends React.Component {
     classes: PropTypes.object.isRequired,
   };
   
-  export default withStyles(styles)(Header);
+  export default withLocalize(withStyles(styles)(Header));
