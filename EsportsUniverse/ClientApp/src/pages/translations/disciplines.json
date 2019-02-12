@@ -17,6 +17,42 @@
             "Редагувати"
         ]
     },
+    "add": {
+        "title": [
+            "Add new discipline",
+            "Додаванння нової дисципліни"
+        ]
+    },
+    "edit": {
+        "title": [
+            "Edit discipline data",
+            "Редагування дисципліни"
+        ],
+        "gameTitle": [
+            "Title",
+            "Назва"
+        ],
+        "titleAbbreviation": [
+            "Title abbreviation",
+            "Скорочена назва"
+        ],
+        "abbreviationHelper": [
+            "Not longer than 8 symbols",
+            "Не довше 8 символів"
+        ],
+        "description": [
+            "Description",
+            "Опис"
+        ],
+        "maxNumberOfPlayers": [
+            "Max number of players in team",
+            "Максимальна кількість гравців у команді"
+        ],
+        "save": [
+            "Save",
+            "Зберегти"
+        ]
+    },
     "table": {
         "title": [
             "Title",

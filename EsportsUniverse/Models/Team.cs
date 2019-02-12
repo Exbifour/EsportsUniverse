@@ -16,6 +16,6 @@ namespace EsportsUniverse.Models
 
         public Discipline Discipline { get; set; }
 
-        public IEnumerable<TeamPlayer> TeamPlayers { get; set; }
+        public IEnumerable<Player> Players { get; set; }
     }
 }

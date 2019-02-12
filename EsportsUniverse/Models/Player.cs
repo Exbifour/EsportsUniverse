@@ -19,6 +19,8 @@ namespace EsportsUniverse.Models
         [MaxLength(50)]
         public string LastName { get; set; }
 
-        public IEnumerable<TeamPlayer> TeamPlayers { get; set; }
+        [Required]
+        public int TeamId { get; set; }
+        public Team Team { get; set; }
     }
 }

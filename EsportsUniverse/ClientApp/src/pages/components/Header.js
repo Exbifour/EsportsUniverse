@@ -73,9 +73,6 @@ class Header extends React.Component {
             </FormGroup> */}
                 <AppBar position="static" title='Esports Universe' >
                     <Toolbar>
-                        {/* <IconButton className={classes.menuButton} color="inherit" aria-label="Menu">
-                            <MenuIcon />
-                        </IconButton> */}
                         <Typography variant="h6" color="inherit" className={classes.navigation}>
                             <Translate id="header.title" />
                         </Typography>

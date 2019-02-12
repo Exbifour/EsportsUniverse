@@ -63,7 +63,11 @@ namespace EsportsUniverse.Migrations
                         .IsRequired()
                         .HasMaxLength(50);
 
+                    b.Property<int>("TeamId");
+
                     b.HasKey("Id");
+
+                    b.HasIndex("TeamId");
 
                     b.ToTable("Players");
                 });
@@ -89,29 +93,12 @@ namespace EsportsUniverse.Migrations
                     b.ToTable("Teams");
                 });
 
-            modelBuilder.Entity("EsportsUniverse.Models.TeamPlayer", b =>
+            modelBuilder.Entity("EsportsUniverse.Models.Player", b =>
                 {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
-
-                    b.Property<DateTime>("DateJoined")
-                        .HasColumnType("date");
-
-                    b.Property<DateTime>("DateLeft")
-                        .HasColumnType("date");
-
-                    b.Property<int>("PlayerId");
-
-                    b.Property<int>("TeamId");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("PlayerId");
-
-                    b.HasIndex("TeamId");
-
-                    b.ToTable("TeamPlayers");
+                    b.HasOne("EsportsUniverse.Models.Team", "Team")
+                        .WithMany("Players")
+                        .HasForeignKey("TeamId")
+                        .OnDelete(DeleteBehavior.Cascade);
                 });
 
             modelBuilder.Entity("EsportsUniverse.Models.Team", b =>
@@ -119,19 +106,6 @@ namespace EsportsUniverse.Migrations
                     b.HasOne("EsportsUniverse.Models.Discipline", "Discipline")
                         .WithMany("Teams")
                         .HasForeignKey("DisciplineId")
-                        .OnDelete(DeleteBehavior.Cascade);
-                });
-
-            modelBuilder.Entity("EsportsUniverse.Models.TeamPlayer", b =>
-                {
-                    b.HasOne("EsportsUniverse.Models.Player", "Player")
-                        .WithMany("TeamPlayers")
-                        .HasForeignKey("PlayerId")
-                        .OnDelete(DeleteBehavior.Cascade);
-
-                    b.HasOne("EsportsUniverse.Models.Team", "Team")
-                        .WithMany("TeamPlayers")
-                        .HasForeignKey("TeamId")
                         .OnDelete(DeleteBehavior.Cascade);
                 });
 #pragma warning restore 612, 618

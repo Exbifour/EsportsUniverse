@@ -14,11 +14,13 @@ import TableCell from '@material-ui/core/TableCell';
 import TableHead from '@material-ui/core/TableHead';
 import TableRow from '@material-ui/core/TableRow';
 
-import Fab from '@material-ui/core/Fab';
 import IconButton from '@material-ui/core/IconButton';
-import AddIcon from '@material-ui/icons/AddOutlined';
 import EditIcon from '@material-ui/icons/EditOutlined';
 import DeleteIcon from '@material-ui/icons/DeleteOutlined';
+
+import { Link as RouterLink } from 'react-router-dom'
+import Link from '@material-ui/core/Link';
+import Button from '@material-ui/core/Button';
 
 
 const styles = theme => ({
@@ -42,37 +44,10 @@ class ManageDisciplines extends React.Component {
 
         this.state = { disciplines: [], loading: true };
 
-        this.removeFromTable = this.removeFromTable.bind(this);
-
         fetch('api/Disciplines')
             .then(response => response.json())
             .then(data => {
                 this.setState({ disciplines: data, loading: false });
-            });
-    }
-
-    removeFromTable(id) {
-        console.log("Into remove from table. Id: " + id);
-        console.log(this);
-        let filtered = this.state.disciplines.filter(el => el.id != id);
-        this.setState({ disciplines: filtered });
-        console.log(this.state.disciplines);
-    }
-
-    deleteData(id) {
-        console.log("Into delete data. Id: " + id);
-        console.log(this);
-        this.removeFromTable.bind(id);
-        fetch('api/Disciplines/' + id, {
-                method: 'DELETE',
-            })
-            .then(response => response.json())
-            .then(function (text) {
-                console.log('Request successful', text);
-                this.removeFromTable(id);
-            })
-            .catch(function (error) {
-                console.log('Delete failed', error);
             });
     }
 
@@ -106,9 +81,11 @@ class ManageDisciplines extends React.Component {
                             <TableCell align="left">{discipline.abbreviation}</TableCell>
                             <TableCell align="left">{discipline.dateAdded}</TableCell>
                             <TableCell align="left">
-                                <IconButton aria-label="Edit" >
-                                    <EditIcon fontSize="small" />
-                                </IconButton>
+                                <Link component={ RouterLink }color="inherit" to={ '/manageDisciplines/edit/' + discipline.id } >
+                                    <IconButton aria-label="Edit" >
+                                        <EditIcon fontSize="small" />
+                                    </IconButton>
+                                </Link>
                                 <IconButton
                                     aria-label="Delete"
                                     onClick={ () => {
@@ -122,7 +99,7 @@ class ManageDisciplines extends React.Component {
                                         .catch(function (error) {
                                             console.log('Delete failed', error);
                                         });
-                                        let filtered = this.state.disciplines.filter(el => el.id != discipline.id);
+                                        let filtered = this.state.disciplines.filter(el => el.id !== discipline.id);
                                         this.setState({ disciplines: filtered });
                                     }
                                 }>
@@ -159,6 +136,11 @@ class ManageDisciplines extends React.Component {
                             <Typography variant='headline' gutterBottom>
                                 <Translate id="manage.title" />
                             </Typography>
+                            <Link component={RouterLink} color="inherit" to='/manageDisciplines/add'>
+                                <Button variant="contained" color="primary">
+                                    <Translate id="manage.addButton" />
+                                </Button>
+                            </Link>
                         </Paper>
                     </Grid>
                     <Grid item xs={12} alignItems='stretch'>
