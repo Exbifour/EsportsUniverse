@@ -1,0 +1,42 @@
+{
+    "manage": {
+        "title": [
+            "Discipline management",
+            "Керування дисциплінами"
+        ],
+        "addButton": [
+            "Add",
+            "Додати"
+        ],
+        "removeButton": [
+            "Remove",
+            "Видалити"
+        ],
+        "editButton": [
+            "Edit",
+            "Редагувати"
+        ]
+    },
+    "table": {
+        "title": [
+            "Title",
+            "Назва"
+        ],
+        "abbreviation": [
+            "Abbreviation",
+            "Скорочено"
+        ],
+        "company": [
+            "Company",
+            "Компанія"
+        ],
+        "dateAdded": [
+            "Date added",
+            "Дата додавання"
+        ],
+        "actions": [
+            "Actions",
+            "Дії"
+        ]
+    }
+}

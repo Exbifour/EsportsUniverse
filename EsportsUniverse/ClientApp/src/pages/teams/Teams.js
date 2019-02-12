@@ -30,31 +30,31 @@ class Teams extends React.Component {
 
         return (
             <div className={classes.root}>
-                    <Grid container className={classes.firstRow} justify='center' height={400} direction='row' alignItems='stretch' spacing={16}>
-                        <Grid item xs={8}>
-                            <Paper className={classes.paper}>
-                                <Typography variant='headline' gutterBottom>
-                                    You are on a Teams page
+                <Grid container className={classes.firstRow} justify='center' height={400} direction='row' alignItems='stretch' spacing={16}>
+                    <Grid item xs={8}>
+                        <Paper className={classes.paper}>
+                            <Typography variant='headline' gutterBottom>
+                                You are on a Teams page
                                 </Typography>
-                            </Paper>
-                        </Grid>
-                        <Grid item xs={4}>
-                            <Paper className={classes.paper}>
-                                <Typography variant='body2' gutterBottom>
-                                    Small paper
-                                </Typography>
-                            </Paper>
-                        </Grid>
+                        </Paper>
                     </Grid>
-                    <Grid container className={classes.secondRow} direction='row' justify='flex-start' alignItems='stretch' spacing={16}>
-                        <Grid item xs={4}>
-                            <Paper className={classes.paper}>
-                                <Typography variant='subheading' gutterBottom>
-                                    I'm here sitting below them.
+                    <Grid item xs={4}>
+                        <Paper className={classes.paper}>
+                            <Typography variant='body2' gutterBottom>
+                                Small paper
                                 </Typography>
-                            </Paper>
-                        </Grid>
+                        </Paper>
                     </Grid>
+                </Grid>
+                <Grid container className={classes.secondRow} direction='row' justify='flex-start' alignItems='stretch' spacing={16}>
+                    <Grid item xs={4}>
+                        <Paper className={classes.paper}>
+                            <Typography variant='subheading' gutterBottom>
+                                I'm here sitting below them.
+                                </Typography>
+                        </Paper>
+                    </Grid>
+                </Grid>
             </div>
         );
     }

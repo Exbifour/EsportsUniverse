@@ -1,8 +1,44 @@
 {
-    "header": {
-      "title": ["Esports Universe", "Всесвіт Кіберспорту"],
-      "disciplines": ["Disciplines", "Дисципліни"],
-      "teams": ["Teams", "Команди"],
-      "games": ["Games", "Ігри"]
-    }
+  "header": {
+    "title": [
+      "Esports Universe",
+      "Всесвіт Кіберспорту"
+    ],
+    "disciplines": [
+      "Disciplines",
+      "Дисципліни"
+    ],
+    "teams": [
+      "Teams",
+      "Команди"
+    ],
+    "games": [
+      "Games",
+      "Ігри"
+    ],
+    "myAccount": [
+      "My account",
+      "Мій аккаунт"
+    ],
+    "manageDisciplines": [
+      "Manage disciplines",
+      "Керувати дисциплінами"
+    ],
+    "managePlayers": [
+      "Manage players",
+      "Керувати гравцями"
+    ],
+    "manageTeams": [
+      "Manage teams",
+      "Керувати командами"
+    ],
+    "manageGames": [
+      "Manage games",
+      "Керувати іграми"
+    ],
+    "signOut": [
+      "Sign out",
+      "Вийти"
+    ]
+  }
 }
