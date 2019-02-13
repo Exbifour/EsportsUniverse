@@ -121,7 +121,7 @@ class Header extends React.Component {
                                     open={open}
                                     onClose={this.handleClose}
                                 >
-                                    <Link component={RouterLink} color="inherit" to='/disciplines/manage'>
+                                    <Link component={RouterLink} color="inherit" to='/manageDisciplines'>
                                         <MenuItem onClick={this.handleClose}>
                                             <Translate id="header.manageDisciplines" />
                                         </MenuItem>

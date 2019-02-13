@@ -18,5 +18,6 @@ namespace EsportsUniverse.Data
         {
 
         }
+
     }
 }

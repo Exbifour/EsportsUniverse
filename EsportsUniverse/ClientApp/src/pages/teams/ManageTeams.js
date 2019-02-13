@@ -85,7 +85,7 @@ class ManageTeams extends React.Component {
                             <TableCell align="left">{team.disciplineId}</TableCell>
                             <TableCell align="left">{team.dateAdded}</TableCell>
                             <TableCell align="left">
-                                <Link component={RouterLink} color="inherit" to={'/manageTeams/edit/' + team.id} >
+                                <Link component={RouterLink} color="inherit" to={'/editTeam/' + team.id} >
                                     <IconButton aria-label="Edit" >
                                         <EditIcon fontSize="small" />
                                     </IconButton>
@@ -140,7 +140,7 @@ class ManageTeams extends React.Component {
                             <Typography variant='headline' gutterBottom>
                                 <Translate id="manage.title" />
                             </Typography>
-                            <Link component={RouterLink} color="inherit" to='/manageTeams/add'>
+                            <Link component={RouterLink} color="inherit" to='/addTeam'>
                                 <Button variant="contained" color="primary">
                                     <Translate id="manage.addButton" />
                                 </Button>

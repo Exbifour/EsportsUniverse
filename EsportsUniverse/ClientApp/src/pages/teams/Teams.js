@@ -70,7 +70,7 @@ class Teams extends React.Component {
                         <TableRow key={team.id} hover={true}>
                             <TableCell align="left">{team.name}</TableCell>
                             <TableCell align="left">{team.abbrebiation}</TableCell>
-                            <TableCell align="left">{team.disciplineId}</TableCell>
+                            <TableCell align="left">{team.discipline.abbreviation}</TableCell>
                             <Link component={RouterLink} color="inherit" to={'/teamProfile/' + team.id}>
                                 <IconButton aria-label="Forward" >
                                     <FastForwardIcon />

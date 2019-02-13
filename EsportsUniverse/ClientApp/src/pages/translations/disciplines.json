@@ -78,5 +78,21 @@
       "Actions",
       "Дії"
     ]
+  },
+  "page": {
+    "table": {
+      "title": [
+        "Teams",
+        "Команди"
+      ],
+      "name": [
+        "Name",
+        "Назва"
+      ],
+      "abbreviation": [
+        "Abbreviation",
+        "Скорочено"
+      ]
+    }
   }
 }

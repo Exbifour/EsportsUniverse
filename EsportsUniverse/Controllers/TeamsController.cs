@@ -25,7 +25,9 @@ namespace EsportsUniverse.Controllers
         [HttpGet]
         public IEnumerable<Team> GetTeams()
         {
-            return _context.Teams;
+            var result = _context.Teams.Include(t => t.Discipline);
+
+            return result;
         }
 
         // GET: api/Teams/5

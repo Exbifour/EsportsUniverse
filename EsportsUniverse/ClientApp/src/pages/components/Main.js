@@ -13,6 +13,7 @@ import EditTeam from '../teams/EditTeam'
 import Games from '../games/Games'
 import ManageGames from '../games/ManageGames'
 import ManagePlayers from '../players/ManagePlayers'
+import Unfinished from './Unfinished'
 
 
 class Main extends React.Component {
@@ -21,19 +22,20 @@ class Main extends React.Component {
         return (
             <main>
                 <Switch>
-                    <Route exact path='/' component={Disciplines} />
-                    <Route path='/:id' component={DisciplinePage} />
-                    <Route exact path='/disciplines/manage' component={ ManageDisciplines }/>
-                    <Route exact path="/disciplines/edit/:id" component={ DisciplineEdit }/>
-                    <Route exact path='/disciplines/add' component={ DisciplineAdd } />
+                    <Route exact path='/' component={ Disciplines } />
+                    
+                    <Route exact path='/manageDisciplines' component={ ManageDisciplines } />
+                    <Route path="/editDiscipline/:id" component={ DisciplineEdit } />
+                    <Route exact path='/addDiscipline' component={DisciplineAdd} />
+                    <Route path='/discipline/:id' component={DisciplinePage} />
                     <Route exact path='/teams' component={Teams} />
-                    <Route path='/teamProfile/:id' component={ TeamProfile } />
-                    <Route exact path='/manageTeams' component={ ManageTeams } />
-                    <Route rxact path="/manageTeams/edit/:id" component={ EditTeam } />
-                    <Route exact path='/manageTeams/add' component={ AddTeam } />
-                    <Route exact path='/games' component={ Games }/>
-                    <Route exact path='/manageGames' component={ ManageGames }/>
-                    <Route exact path='/managePlayers' component={ ManagePlayers }/>
+                    <Route path='/teamProfile/:id' component={Unfinished} />
+                    <Route exact path='/manageTeams' component={ManageTeams} />
+                    <Route path="/editTeam/:id" component={EditTeam} />
+                    <Route exact path='/addTeam' component={AddTeam} />
+                    <Route exact path='/games' component={Unfinished} />
+                    <Route exact path='/manageGames' component={Unfinished} />
+                    <Route exact path='/managePlayers' component={Unfinished} />
                 </Switch>
             </main>
         );

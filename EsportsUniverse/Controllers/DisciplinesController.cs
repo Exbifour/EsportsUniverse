@@ -37,7 +37,7 @@ namespace EsportsUniverse.Controllers
                 return BadRequest(ModelState);
             }
 
-            var discipline = await _context.Disciplines.FindAsync(id);
+            var discipline = _context.Disciplines.Include(d => d.Teams).FirstOrDefault(d => d.Id == id);
 
             if (discipline == null)
             {

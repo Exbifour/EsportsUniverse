@@ -74,25 +74,24 @@ class Disciplines extends React.Component {
                         </ListSubheader>
                     </GridListTile>
                     {data.map(tile => (
-                        
                         <GridListTile>
-                            <Link component={RouterLink} color="inherit" to={'/disciplinePage/' + tile.id}>
+                            <Link component={RouterLink} color="inherit" to={'/discipline/' + tile.id}>
                                 <img src="http://mcgrawwentworth.com/wp-content/themes/openmind/img/no_image.png" />
                             </Link>
-                                <GridListTileBar
-                                    title={tile.title}
-                                    subtitle={<span>{tile.description}</span>}
-                                    actionIcon={
-                                        <Link component={RouterLink} color="inherit" to={'/disciplinePage/' + tile.id}>
+                            <GridListTileBar
+                                title={tile.title}
+                                subtitle={<span>{tile.description}</span>}
+                                actionIcon={
+                                    <Link component={RouterLink} color="inherit" to={'/discipline/' + tile.id}>
                                         <IconButton className={classes.icon} aria-label="Forward" >
                                             <FastForwardIcon />
                                         </IconButton>
-                                        </Link>
-                        }
-                    />
-                    
-                            </GridListTile>
-                        
+                                    </Link>
+                                }
+                            />
+
+                        </GridListTile>
+
                     ))}
                 </GridList>
             </div>

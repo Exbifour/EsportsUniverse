@@ -42,7 +42,7 @@ class EditTeam extends React.Component {
         this.state = { team: [], toManage: false, allDisciplines: [] }
 
         const id = this.props.match.params.id;
-        const url = 'https://localhost:44365/api/Teams/' + id;
+        const url = "api/Teams/" + id;
         console.log(url);
         fetch(url)
             .then(response => response.json())
@@ -54,7 +54,7 @@ class EditTeam extends React.Component {
             .catch(error => console.log(error));
         //console.log('after fetch')
 
-        fetch('https://localhost:44365/api/Disciplines')
+        fetch('/api/Disciplines')
             .then(response => response.json())
             .then(data => {
                 this.setState({ allDisciplines: data });
