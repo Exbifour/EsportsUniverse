@@ -21,6 +21,6 @@ namespace EsportsUniverse.Models
         [Required]
         public int MaxPlayersInTeam { get; set; }
 
-        public IEnumerable<Team> Teams { get; set; }
+        public virtual IEnumerable<Team> Teams { get; set; }
     }
 }

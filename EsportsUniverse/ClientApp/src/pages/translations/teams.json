@@ -1,8 +1,8 @@
 {
   "manage": {
     "title": [
-      "Discipline management",
-      "Керування дисциплінами"
+      "Teams management",
+      "Керування командами"
     ],
     "addButton": [
       "Add",
@@ -19,34 +19,30 @@
   },
   "add": {
     "title": [
-      "Add new discipline",
-      "Додаванння нової дисципліни"
+      "Add new team",
+      "Додаванння нової команди"
     ]
   },
   "edit": {
     "title": [
-      "Edit discipline data",
-      "Редагування дисципліни"
+      "Edit team data",
+      "Редагування команди"
     ],
-    "gameTitle": [
-      "Title",
-      "Назва"
+    "name": [
+      "Team name",
+      "Назва команди"
     ],
-    "titleAbbreviation": [
-      "Title abbreviation",
+    "abbreviation": [
+      "Name abbreviation",
       "Скорочена назва"
     ],
     "abbreviationHelper": [
       "Not longer than 8 symbols",
       "Не довше 8 символів"
     ],
-    "description": [
-      "Description",
-      "Опис"
-    ],
-    "maxNumberOfPlayers": [
-      "Max number of players in team",
-      "Максимальна кількість гравців у команді"
+    "discipline": [
+      "Discipline",
+      "Дисципліна"
     ],
     "save": [
       "Save",
@@ -54,29 +50,31 @@
     ]
   },
   "table": {
-    "title": [
-      "Title",
+    "name": [
+      "Name",
       "Назва"
-    ],
-    "subheader": [
-      "All disciplines",
-      "Всі дисципліни"
     ],
     "abbreviation": [
       "Abbreviation",
       "Скорочено"
     ],
-    "company": [
-      "Company",
-      "Компанія"
-    ],
     "dateAdded": [
       "Date added",
       "Дата додавання"
     ],
+    "discipline": [
+      "Discipline",
+      "Дисципліна"
+    ],
     "actions": [
       "Actions",
       "Дії"
+    ]
+  },
+  "general": {
+    "title": [
+      "All teams",
+      "Всі команди"
     ]
   }
 }

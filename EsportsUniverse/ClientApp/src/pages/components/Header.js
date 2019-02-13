@@ -106,7 +106,7 @@ class Header extends React.Component {
                                 >
                                     <AccountCircle className={classes.leftIcon} />
                                     Admin
-                            </Button>
+                                </Button>
                                 <Menu
                                     id="menu-appbar"
                                     anchorEl={anchorEl}
@@ -121,7 +121,7 @@ class Header extends React.Component {
                                     open={open}
                                     onClose={this.handleClose}
                                 >
-                                    <Link component={RouterLink} color="inherit" to='/manageDisciplines'>
+                                    <Link component={RouterLink} color="inherit" to='/disciplines/manage'>
                                         <MenuItem onClick={this.handleClose}>
                                             <Translate id="header.manageDisciplines" />
                                         </MenuItem>

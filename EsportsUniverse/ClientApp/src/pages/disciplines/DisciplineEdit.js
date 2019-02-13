@@ -41,15 +41,18 @@ class DisciplineEdit extends React.Component {
 
         this.state = { discipline: [], toManage: false, }
 
-        const url = 'api/Disciplines/' + this.props.match.params.id
+        const id = this.props.match.params.id;
+        const url = 'https://localhost:44365/api/Disciplines/' + id;
         console.log(url);
         fetch(url)
             .then(response => response.json())
             .then(data => {
-                console.log(data);
-                this.setState({ discipline: data });
-                console.log(this.state.discipline);
-            });
+                console.log(data)
+                this.setState({ discipline: data })
+                console.log(this.state.discipline)
+            })
+            .catch(error => console.log(error));
+        //console.log('after fetch')
     }
 
     handleChange = name => event => {
@@ -70,26 +73,26 @@ class DisciplineEdit extends React.Component {
         let method = "PUT"
 
         console.log(data);
-        // fetch(url, {
-        //     method: method,
-        //     headers: {
-        //         'Accept': 'application/json',
-        //         'Content-Type': 'application/json'
-        //     },
-        //     body: JSON.stringify(data)
-        // })
-        //     .then(response => response.json())
-        //     .then(function (text) {
-        //         console.log('Request successful', text);
-        //     })
-        //     .then(() => {
-        //         this.setState(() => ({
-        //             toManage: true
-        //         }))
-        //     })
-        //     .catch(function (error) {
-        //         console.log('Add failed', error);
-        //     })
+         fetch(url, {
+             method: method,
+             headers: {
+                 'Accept': 'application/json',
+                 'Content-Type': 'application/json'
+             },
+             body: JSON.stringify(data)
+         })
+             .then(response => response.json())
+             .then(function (text) {
+                 console.log('Request successful', text);
+             })
+             .then(() => {
+                 this.setState(() => ({
+                     toManage: true
+                 }))
+             })
+             .catch(function (error) {
+                 console.log('Add failed', error);
+             })
     }
 
     render() {
@@ -158,7 +161,7 @@ class DisciplineEdit extends React.Component {
                         </Grid>
                         <Grid item xs={8}>
                             <Button variant="contained" size="large" color="primary" onClick={this.sendData}>
-                                <Translate id="manage.addButton" />
+                                <Translate id="edit.save" />
                             </Button>
                         </Grid>
                     </Paper>

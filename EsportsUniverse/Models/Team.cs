@@ -14,8 +14,8 @@ namespace EsportsUniverse.Models
 
         public int DisciplineId { get; set; }
 
-        public Discipline Discipline { get; set; }
+        public virtual Discipline Discipline { get; set; }
 
-        public IEnumerable<Player> Players { get; set; }
+        public virtual IEnumerable<Player> Players { get; set; }
     }
 }

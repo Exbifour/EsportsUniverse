@@ -1,103 +1,107 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import Button from '@material-ui/core/Button';
-import Dialog from '@material-ui/core/Dialog';
-import DialogTitle from '@material-ui/core/DialogTitle';
-import DialogContent from '@material-ui/core/DialogContent';
-import DialogContentText from '@material-ui/core/DialogContentText';
-import DialogActions from '@material-ui/core/DialogActions';
 import Typography from '@material-ui/core/Typography';
 import { withStyles } from '@material-ui/core/styles';
-import FingerprintIcon from '@material-ui/icons/FingerprintOutlined';
-import CheckCircleIcon from '@material-ui/icons/CheckCircleOutlined';
-import Paper from '@material-ui/core/Paper';
-import Grid from '@material-ui/core/Grid';
 import { Link as RouterLink } from 'react-router-dom'
 import Link from '@material-ui/core/Link';
-
+import IconButton from '@material-ui/core/IconButton';
+import FastForwardIcon from '@material-ui/icons/FastForwardOutlined';
+import GridList from '@material-ui/core/GridList';
+import GridListTile from '@material-ui/core/GridListTile';
+import GridListTileBar from '@material-ui/core/GridListTileBar';
+import ListSubheader from '@material-ui/core/ListSubheader';
+import { withLocalize } from "react-localize-redux";
+import disciplinesTranslations from "../translations/disciplines.json";
+import { Translate } from "react-localize-redux";
 
 const styles = theme => ({
-  root: {
-    textAlign: 'center',
-    padding: theme.spacing.unit * 2,
-  },
-  paper: {
-    height: 'auto',
-    padding: theme.spacing.unit * 4,
-  },
-  grid: {
-    height: 200,
-  },
-  leftIcon: {
-    marginRight: theme.spacing.unit,
-  },
-  innerButton: {
-    padding: theme.spacing.unit,
-  }
+    root: {
+        textAlign: 'center',
+        padding: theme.spacing.unit * 2,
+        display: 'flex',
+        flexWrap: 'wrap',
+        justifyContent: 'space-around',
+        overflow: 'hidden',
+        backgroundColor: theme.palette.background.paper,
+    },
+    paper: {
+        height: 'auto',
+        padding: theme.spacing.unit * 4,
+    },
+    grid: {
+        height: 200,
+    },
+    leftIcon: {
+        marginRight: theme.spacing.unit,
+    },
+    innerButton: {
+        padding: theme.spacing.unit,
+    },
+    gridList: {
+        width: 800,
+        height: '100%',
+    },
+    icon: {
+        color: 'rgba(255, 255, 255, 0.54)',
+    },
 });
 
 class Disciplines extends React.Component {
-  state = {
-    open: false,
-  };
+    constructor(props) {
+        super(props);
 
-  handleClose = () => {
-    this.setState({
-      open: false,
-    });
-  };
+        this.props.addTranslation(disciplinesTranslations);
 
-  handleOpen = () => {
-    this.setState({
-      open: true,
-    });
-  };
+        this.state = { disciplines: [], loading: true };
 
-  render() {
-    const { classes } = this.props;
-    const { open } = this.state;
+        fetch('api/Disciplines')
+            .then(response => response.json())
+            .then(data => {
+                this.setState({ disciplines: data, loading: false });
+            });
+    }
 
-    return (
-      <div className={classes.root}>
-        <Grid container className={classes.grid} justify='center' spacing={16} alignItems='center'>
-          <Paper className={classes.paper} elevation={1}>
-            <Dialog open={open} onClose={this.handleClose}>
-              <DialogTitle>Super Secret Password</DialogTitle>
-              <DialogContent>
-                <DialogContentText>1-2-3-4-5</DialogContentText>
-              </DialogContent>
-              <DialogActions>
-                <Button color="primary" onClick={this.handleClose}>
-                  <CheckCircleIcon className={classes.leftIcon} />
-                  OK
-                </Button>
-              </DialogActions>
-            </Dialog>
-            <Typography variant="h4" gutterBottom>
-              Esports universe
-            </Typography>
-            <Typography variant="subtitle1" gutterBottom>
-              Not an example anymore :)
-            </Typography>
-              <Button variant="outlined" color="secondary" onClick={this.handleOpen}>
-                <FingerprintIcon className={classes.leftIcon} />
-                Super Secret Password
-              </Button>
-            <br />
-              <Link component={RouterLink} to='/teams'>
-                <Button variant="contained" color="primary">
-                    Go to teams
-                </Button>
-              </Link>
-          </Paper>
-        </Grid>
-      </div>
-    );
-  }
+    render() {
+        const { classes } = this.props;
+        const data = this.state.disciplines;
+
+        return (
+            <div className={classes.root}>
+                <GridList cellHeight={200} className={classes.gridList}>
+                    <GridListTile key="Subheader" cols={2} style={{ height: 'auto' }}>
+                        <ListSubheader component="div">
+                            <Translate id="table.subheader" />
+                        </ListSubheader>
+                    </GridListTile>
+                    {data.map(tile => (
+                        
+                        <GridListTile>
+                            <Link component={RouterLink} color="inherit" to={'/disciplinePage/' + tile.id}>
+                                <img src="http://mcgrawwentworth.com/wp-content/themes/openmind/img/no_image.png" />
+                            </Link>
+                                <GridListTileBar
+                                    title={tile.title}
+                                    subtitle={<span>{tile.description}</span>}
+                                    actionIcon={
+                                        <Link component={RouterLink} color="inherit" to={'/disciplinePage/' + tile.id}>
+                                        <IconButton className={classes.icon} aria-label="Forward" >
+                                            <FastForwardIcon />
+                                        </IconButton>
+                                        </Link>
+                        }
+                    />
+                    
+                            </GridListTile>
+                        
+                    ))}
+                </GridList>
+            </div>
+        );
+    }
 }
 
 Disciplines.propTypes = {
-  classes: PropTypes.object.isRequired,
+    classes: PropTypes.object.isRequired,
 };
 
-export default withStyles(styles)(Disciplines);
+export default withLocalize(withStyles(styles)(Disciplines));

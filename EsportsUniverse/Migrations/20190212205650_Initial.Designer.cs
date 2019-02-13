@@ -10,7 +10,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace EsportsUniverse.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20190212151203_Initial")]
+    [Migration("20190212205650_Initial")]
     partial class Initial
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)

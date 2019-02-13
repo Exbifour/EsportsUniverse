@@ -1,11 +1,11 @@
-import React from 'react';
+﻿import React from 'react';
 import PropTypes from 'prop-types';
 import Paper from '@material-ui/core/Paper';
 import Grid from '@material-ui/core/Grid';
 import Typography from '@material-ui/core/Typography';
 import { withStyles } from '@material-ui/core/styles';
 import { withLocalize } from "react-localize-redux";
-import disciplinesTranslations from "../translations/disciplines.json";
+import teamsTranslations from "../translations/teams.json";
 import { Translate } from "react-localize-redux";
 import Button from '@material-ui/core/Button';
 import TextField from '@material-ui/core/TextField';
@@ -33,48 +33,47 @@ const styles = theme => ({
     },
 })
 
-class DisciplineEdit extends React.Component {
+class AddTeam extends React.Component {
     constructor(props) {
         super(props);
 
-        this.props.addTranslation(disciplinesTranslations);
+        this.props.addTranslation(teamsTranslations);
 
-        this.state = { discipline: [], toManage: false, }
+        this.state = {
+            name: '',
+            abbrebiation: '',
+            disciplineId: '',
+            toManage: false,
+            allDisciplines: []
+        };
 
-        const id = this.props.match.params.id;
-        const url = 'https://localhost:44365/api/Disciplines/' + id;
-        console.log(url);
-        fetch(url)
+        fetch('api/Disciplines')
             .then(response => response.json())
             .then(data => {
-                console.log(data)
-                this.setState({ discipline: data })
-                console.log(this.state.discipline)
-            })
-            .catch(error => console.log(error));
-        //console.log('after fetch')
+                this.setState({ allDisciplines: data });
+            });
     }
 
     handleChange = name => event => {
         this.setState({
             [name]: event.target.value
         });
-    }
+    };
 
     sendData = () => {
-        const data = this.state.discipline;
-
-        if (data.title.length < 1 || data.abbreviation.length < 1 || data.maxNumberOfPlayers < 1 || data.abbreviation.length > 8) {
+        const data = {
+            name: this.state.name,
+            abbrebiation: this.state.abbrebiation,
+            disciplineId: this.state.disciplineId,
+            description: this.state.description,
+            maxPlayersInTeam: this.state.maxNumberOfPlayers,
+        };
+        if (data.name.length < 1 || data.abbrebiation.length < 1 || data.disciplineId < 1 || data.abbrebiation.length > 8) {
             alert("Wrong input!");
             return;
         }
-
-        let url = "/api/Disciplines/" + data.id;
-        let method = "PUT"
-
-        console.log(data);
-        fetch(url, {
-            method: method,
+        fetch("/api/Teams", {
+            method: "POST",
             headers: {
                 'Accept': 'application/json',
                 'Content-Type': 'application/json'
@@ -93,11 +92,12 @@ class DisciplineEdit extends React.Component {
             .catch(function (error) {
                 console.log('Add failed', error);
             })
+
     }
 
     render() {
         if (this.state.toManage === true) {
-            return <Redirect to='/manageDisciplines' />
+            return <Redirect to='/manageTeams' />
         }
         const { classes } = this.props;
 
@@ -106,15 +106,15 @@ class DisciplineEdit extends React.Component {
                 <Grid container justify='center' direction="column" alignItems='stretch' spacing={16}>
                     <Paper className={classes.paper}>
                         <Typography variant='headline' gutterBottom>
-                            <Translate id="edit.title" />
+                            <Translate id="add.title" />
                         </Typography>
                         <Grid item xs={8}>
                             <TextField
                                 id="outlined-name"
-                                label={<Translate id="edit.gameTitle" />}
+                                label={<Translate id="edit.name" />}
                                 className={classes.textField}
-                                value={this.state.discipline.title}
-                                onChange={this.handleChange('discipline.title')}
+                                value={this.state.name}
+                                onChange={this.handleChange('name')}
                                 margin="normal"
                                 variant="standard"
                             />
@@ -122,10 +122,10 @@ class DisciplineEdit extends React.Component {
                         <Grid item xs={8}>
                             <TextField
                                 id="outlined-name"
-                                label={<Translate id="edit.titleAbbreviation" />}
+                                label={<Translate id="edit.abbreviation" />}
                                 className={classes.textField}
-                                value={this.state.discipline.abbreviation}
-                                onChange={this.handleChange('discipline.abbreviation')}
+                                value={this.state.abbrebiation}
+                                onChange={this.handleChange('abbrebiation')}
                                 margin="normal"
                                 variant="standard"
                                 helperText={<Translate id="edit.abbreviationHelper" />}
@@ -133,29 +133,16 @@ class DisciplineEdit extends React.Component {
                         </Grid>
                         <Grid item xs={8}>
                             <TextField
-                                id="outlined-multiline-flexible"
-                                label={<Translate id="edit.description" />}
-                                multiline
-                                rowsMax="4"
-                                value={this.state.discipline.description}
-                                onChange={this.handleChange('discipline.description')}
-                                className={classes.textField}
+                                id="outlined-name"
+                                label={<Translate id="edit.discipline" />}
+                                value={this.state.disciplineId}
+                                onChange={this.handleChange('disciplineId')}
                                 margin="normal"
-                                variant="standard"
-                            />
-                        </Grid>
-                        <Grid item xs={8}>
-                            <TextField
-                                id="outlined-number"
-                                label={<Translate id="edit.maxNumberOfPlayers" />}
-                                value={this.state.discipline.maxNumberOfPlayers}
-                                onChange={this.handleChange('discipline.maxNumberOfPlayers')}
                                 type="number"
                                 className={classes.textField}
                                 InputLabelProps={{
                                     shrink: true,
                                 }}
-                                margin="normal"
                                 variant="standard"
                             />
                         </Grid>
@@ -167,12 +154,12 @@ class DisciplineEdit extends React.Component {
                     </Paper>
                 </Grid>
             </div >
-        )
+        );
     }
 }
 
-DisciplineEdit.propTypes = {
+AddTeam.propTypes = {
     classes: PropTypes.object.isRequired,
 };
 
-export default withLocalize(withStyles(styles)(DisciplineEdit));
+export default withLocalize(withStyles(styles)(AddTeam));
