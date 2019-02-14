@@ -86,7 +86,7 @@ class ManageTeams extends React.Component {
                             </TableCell>
                             <TableCell align="left">{team.name}</TableCell>
                             <TableCell align="left">{team.abbrebiation}</TableCell>
-                            <TableCell align="left">{team.disciplineId}</TableCell>
+                            <TableCell align="left">{team.discipline.abbreviation}</TableCell>
                             <TableCell align="left">{team.dateAdded}</TableCell>
                             <TableCell align="left">
                                 <Link component={RouterLink} color="inherit" to={'/manage/teams/' + team.id} >
@@ -97,18 +97,20 @@ class ManageTeams extends React.Component {
                                 <IconButton
                                     aria-label="Delete"
                                     onClick={() => {
-                                        fetch('api/Teams/' + team.id, {
+                                        fetch('../api/Teams/' + team.id, {
                                             method: 'DELETE',
                                         })
                                             .then(response => response.json())
                                             .then(function (text) {
                                                 console.log('Request successful', text);
                                             })
+                                            .then(() => {
+                                                let filtered = this.state.teams.filter(el => el.id !== team.id);
+                                                this.setState({ teams: filtered });
+                                            })
                                             .catch(function (error) {
                                                 console.log('Delete failed', error);
                                             });
-                                        let filtered = this.state.teams.filter(el => el.id !== team.id);
-                                        this.setState({ teams: filtered });
                                     }
                                     }>
                                     <DeleteIcon fontSize="small" />

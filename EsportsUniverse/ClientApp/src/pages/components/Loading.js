@@ -8,7 +8,8 @@ const styles = theme => ({
         width: "100%",
     },
     progress: {
-        margin: 'auto',
+        marginLeft: '50%',
+        marginRight: '50%',
     },
 });
 

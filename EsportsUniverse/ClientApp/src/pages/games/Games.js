@@ -25,35 +25,35 @@ const styles = theme => ({
 })
 
 class Games extends React.Component {
-    constructor(props) {
-        super(props);
+    // constructor(props) {
+    //     super(props);
         
-        this.state = {
-          nick: '',
-          message: '',
-          messages: [],
-          hubConnection: null,
-        };
-      }
+    //     this.state = {
+    //       nick: '',
+    //       message: '',
+    //       messages: [],
+    //       hubConnection: null,
+    //     };
+    //   }
     
-      componentDidMount = () => {
-        const nick = window.prompt('Your name:', 'John');
+    //   componentDidMount = () => {
+    //     const nick = window.prompt('Your name:', 'John');
     
-        const hubConnection = new HubConnection('api/chat');
+    //     const hubConnection = new HubConnection('api/chat');
     
-        this.setState({ hubConnection, nick }, () => {
-          this.state.hubConnection
-            .start()
-            .then(() => console.log('Connection started!'))
-            .catch(err => console.log('Error while establishing connection :('));
+    //     this.setState({ hubConnection, nick }, () => {
+    //       this.state.hubConnection
+    //         .start()
+    //         .then(() => console.log('Connection started!'))
+    //         .catch(err => console.log('Error while establishing connection :('));
     
-          this.state.hubConnection.on('sendToAll', (nick, receivedMessage) => {
-            const text = `${nick}: ${receivedMessage}`;
-            const messages = this.state.messages.concat([text]);
-            this.setState({ messages });
-          });
-        });
-    }
+    //       this.state.hubConnection.on('sendToAll', (nick, receivedMessage) => {
+    //         const text = `${nick}: ${receivedMessage}`;
+    //         const messages = this.state.messages.concat([text]);
+    //         this.setState({ messages });
+    //       });
+    //     });
+    // }
 
 
     render() {
@@ -69,7 +69,6 @@ class Games extends React.Component {
                                 </Typography>
                             </Paper>
                         </Grid>
-                        
                     </Grid>
             </div>
         );

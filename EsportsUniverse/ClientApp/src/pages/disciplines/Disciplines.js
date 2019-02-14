@@ -1,15 +1,20 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-// import Typography from '@material-ui/core/Typography';
-import { withStyles } from '@material-ui/core/styles';
-import { Link as RouterLink } from 'react-router-dom'
-import Link from '@material-ui/core/Link';
-import IconButton from '@material-ui/core/IconButton';
-import FastForwardIcon from '@material-ui/icons/FastForwardOutlined';
+
 import GridList from '@material-ui/core/GridList';
 import GridListTile from '@material-ui/core/GridListTile';
 import GridListTileBar from '@material-ui/core/GridListTileBar';
 import ListSubheader from '@material-ui/core/ListSubheader';
+
+import Loading from '../components/Loading';
+
+import Link from '@material-ui/core/Link';
+import IconButton from '@material-ui/core/IconButton';
+import FastForwardIcon from '@material-ui/icons/FastForwardOutlined';
+
+import { withStyles } from '@material-ui/core/styles';
+import { Link as RouterLink } from 'react-router-dom'
+
 import { withLocalize } from "react-localize-redux";
 import disciplinesTranslations from "../translations/disciplines.json";
 import { Translate } from "react-localize-redux";
@@ -61,9 +66,38 @@ class Disciplines extends React.Component {
             });
     }
 
+    renderGrid(data) {
+        const { classes } = this.props;
+
+        return (
+            data.map(tile => (
+                <GridListTile key={tile.abbreviation}>
+                    <Link component={RouterLink} color="inherit" to={'/disciplines/' + tile.id}>
+                        <img src="http://mcgrawwentworth.com/wp-content/themes/openmind/img/no_image.png" alt={tile.title + ' logo'} />
+                    </Link>
+                    <GridListTileBar
+                        title={tile.title}
+                        subtitle={<span>{tile.description}</span>}
+                        actionIcon={
+                            <Link component={RouterLink} color="inherit" to={'/disciplines/' + tile.id}>
+                                <IconButton className={classes.icon} aria-label="Forward" >
+                                    <FastForwardIcon />
+                                </IconButton>
+                            </Link>
+                        }
+                    />
+                </GridListTile>
+            ))
+        )
+    }
+
+
     render() {
         const { classes } = this.props;
-        const data = this.state.disciplines;
+
+        let grid = this.state.loading 
+            ? <GridListTile key="Loading" cols={2} style={{ height: 'auto' }}><Loading /></GridListTile>
+            : this.renderGrid(this.state.disciplines);
 
         return (
             <div className={classes.root}>
@@ -73,26 +107,7 @@ class Disciplines extends React.Component {
                             <Translate id="table.subheader" />
                         </ListSubheader>
                     </GridListTile>
-                    {data.map(tile => (
-                        <GridListTile key={tile.abbreviation}>
-                            <Link component={RouterLink} color="inherit" to={'/disciplines/' + tile.id}>
-                                <img src="http://mcgrawwentworth.com/wp-content/themes/openmind/img/no_image.png" alt={tile.title + ' logo'} />
-                            </Link>
-                            <GridListTileBar
-                                title={tile.title}
-                                subtitle={<span>{tile.description}</span>}
-                                actionIcon={
-                                    <Link component={RouterLink} color="inherit" to={'/disciplines/' + tile.id}>
-                                        <IconButton className={classes.icon} aria-label="Forward" >
-                                            <FastForwardIcon />
-                                        </IconButton>
-                                    </Link>
-                                }
-                            />
-
-                        </GridListTile>
-
-                    ))}
+                    {grid}
                 </GridList>
             </div>
         );

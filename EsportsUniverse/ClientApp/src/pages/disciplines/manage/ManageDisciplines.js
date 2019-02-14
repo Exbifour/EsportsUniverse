@@ -92,7 +92,7 @@ class ManageDisciplines extends React.Component {
                                 <IconButton
                                     aria-label="Delete"
                                     onClick={ () => {
-                                        fetch('api/Disciplines/' + discipline.id, {
+                                        fetch('../api/Disciplines/' + discipline.id, {
                                             method: 'DELETE',
                                         })
                                         .then(response => response.json())

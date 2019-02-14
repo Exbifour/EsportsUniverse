@@ -1,0 +1,62 @@
+{
+    "manage": {
+        "title": [
+            "Players management",
+            "Керування гравцями"
+        ],
+        "addButton": [
+            "Add",
+            "Додати"
+        ],
+        "removeButton": [
+            "Remove",
+            "Видалити"
+        ],
+        "editButton": [
+            "Edit",
+            "Редагувати"
+        ]
+    },
+    "add": {
+        "title": [
+            "Add new player",
+            "Додаванння нового гравця"
+        ]
+    },
+    "edit": {
+        "title": [
+            "Edit player data",
+            "Редагування даних гравця"
+        ],
+        "save": [
+            "Save",
+            "Зберегти"
+        ]
+    },
+    "table": {
+        "nickName": [
+            "Nickname",
+            "Нікнейм"
+        ],
+        "firstName": [
+            "Firstname",
+            "Ім'я"
+        ],
+        "lastName": [
+            "Lastname",
+            "Прізвище"
+        ],
+        "team": [
+            "Team",
+            "Команда"
+        ],
+        "discipline": [
+            "Discipline",
+            "Дисципліна"
+        ],
+        "actions": [
+            "Actions",
+            "Дії"
+        ]
+    }
+}
