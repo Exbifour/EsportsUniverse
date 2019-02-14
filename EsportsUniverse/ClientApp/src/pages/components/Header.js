@@ -73,9 +73,11 @@ class Header extends React.Component {
             </FormGroup> */}
                 <AppBar position="static" title='Esports Universe' >
                     <Toolbar>
-                        <Typography variant="h6" color="inherit" className={classes.navigation}>
-                            <Translate id="header.title" />
-                        </Typography>
+                        <Link component={RouterLink} color="inherit" to='/'>
+                                <Typography variant="h6" color="inherit" className={classes.navigation}>
+                                    <Translate id="header.title" />
+                                </Typography>
+                        </Link>
                         <Link component={RouterLink} color="inherit" to='/'>
                             <Button variant="text" size='large' color="inherit" className={classes.navigation}>
                                 <Translate id="header.disciplines" />
@@ -110,33 +112,29 @@ class Header extends React.Component {
                                 <Menu
                                     id="menu-appbar"
                                     anchorEl={anchorEl}
-                                    anchorOrigin={{
-                                        vertical: 'bottom',
-                                        horizontal: 'right',
-                                    }}
                                     transformOrigin={{
-                                        vertical: 'top',
+                                        vertical: 'bottom',
                                         horizontal: 'right',
                                     }}
                                     open={open}
                                     onClose={this.handleClose}
                                 >
-                                    <Link component={RouterLink} color="inherit" to='/manageDisciplines'>
+                                    <Link component={RouterLink} color="inherit" to='/manage/disciplines'>
                                         <MenuItem onClick={this.handleClose}>
                                             <Translate id="header.manageDisciplines" />
                                         </MenuItem>
                                     </Link>
-                                    <Link component={RouterLink} color="inherit" to='/managePlayers'>
+                                    <Link component={RouterLink} color="inherit" to='/manage/players'>
                                         <MenuItem onClick={this.handleClose}>
                                             <Translate id="header.managePlayers" />
                                         </MenuItem>
                                     </Link>
-                                    <Link component={RouterLink} color="inherit" to='/manageTeams'>
+                                    <Link component={RouterLink} color="inherit" to='/manage/teams'>
                                         <MenuItem onClick={this.handleClose}>
                                             <Translate id="header.manageTeams" />
                                         </MenuItem>
                                     </Link>
-                                    <Link component={RouterLink} color="inherit" to='/manageGames'>
+                                    <Link component={RouterLink} color="inherit" to='/manage/games'>
                                         <MenuItem onClick={this.handleClose}>
                                             <Translate id="header.manageGames" />
                                         </MenuItem>

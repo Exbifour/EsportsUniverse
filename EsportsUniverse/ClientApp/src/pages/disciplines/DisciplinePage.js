@@ -5,7 +5,6 @@ import Grid from '@material-ui/core/Grid';
 import Typography from '@material-ui/core/Typography';
 import { withStyles } from '@material-ui/core/styles';
 import { withLocalize } from "react-localize-redux";
-import teamsTranslations from "../translations/teams.json";
 import { Translate } from "react-localize-redux";
 
 import Table from '@material-ui/core/Table';
@@ -68,7 +67,7 @@ class DisciplinePage extends React.Component {
                         <TableRow key={team.id} hover={true}>
                             <TableCell align="left">{team.name}</TableCell>
                             <TableCell align="left">{team.abbrebiation}</TableCell>
-                            <Link component={RouterLink} color="inherit" to={'/teamProfile/' + team.id}>
+                            <Link component={RouterLink} color="inherit" to={'/teams/' + team.id}>
                                 <IconButton aria-label="Forward" >
                                     <FastForwardIcon />
                                 </IconButton>

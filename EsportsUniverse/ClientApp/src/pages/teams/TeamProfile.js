@@ -33,7 +33,7 @@ class Games extends React.Component {
                 <Grid container className={classes.firstRow} justify='center' height={400} direction='row' alignItems='stretch' spacing={16}>
                     <Grid item xs={8}>
                         <Paper className={classes.paper}>
-                            <Typography variant='headline' gutterBottom>
+                            <Typography variant='h5' gutterBottom>
                                 You are on a Team {this.props.match.params.id} profile page
                             </Typography>
                         </Paper>
@@ -42,7 +42,7 @@ class Games extends React.Component {
                         <Paper className={classes.paper}>
                             <Typography variant='body2' gutterBottom>
                                 Small paper
-                                </Typography>
+                            </Typography>
                         </Paper>
                     </Grid>
                 </Grid>

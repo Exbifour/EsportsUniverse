@@ -1,6 +1,6 @@
 import React from "react";
-import PropTypes from 'prop-types';
-import { withStyles } from '@material-ui/core/styles';
+// import PropTypes from 'prop-types';
+// import { withStyles } from '@material-ui/core/styles';
 import { withLocalize } from "react-localize-redux";
 import MenuItem from '@material-ui/core/MenuItem';
 import Menu from '@material-ui/core/Menu';
@@ -35,10 +35,6 @@ class LanguageToggle extends React.Component {
                 <Menu
                     id="lang-appbar"
                     anchorEl={this.state.anchorEl}
-                    anchorOrigin={{
-                        vertical: 'bottom',
-                        horizontal: 'right',
-                    }}
                     transformOrigin={{
                         vertical: 'top',
                         horizontal: 'right',
@@ -48,7 +44,8 @@ class LanguageToggle extends React.Component {
                 >
                     {
                         this.props.languages.map(lang => (
-                            <MenuItem 
+                            <MenuItem
+                                key={lang.code}
                                 onClick={() => { 
                                     this.props.setActiveLanguage(lang.code); 
                                     this.handleClose();
@@ -64,8 +61,8 @@ class LanguageToggle extends React.Component {
     } 
 }
 
-LanguageToggle.propTypes = {
-    classes: PropTypes.object.isRequired,
-};
+// LanguageToggle.propTypes = {
+//     classes: PropTypes.object.isRequired,
+// };
 
-export default withLocalize(withStyles()(LanguageToggle));
+export default withLocalize(LanguageToggle);

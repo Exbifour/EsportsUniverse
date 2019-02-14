@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import Typography from '@material-ui/core/Typography';
+// import Typography from '@material-ui/core/Typography';
 import { withStyles } from '@material-ui/core/styles';
 import { Link as RouterLink } from 'react-router-dom'
 import Link from '@material-ui/core/Link';
@@ -74,15 +74,15 @@ class Disciplines extends React.Component {
                         </ListSubheader>
                     </GridListTile>
                     {data.map(tile => (
-                        <GridListTile>
-                            <Link component={RouterLink} color="inherit" to={'/discipline/' + tile.id}>
-                                <img src="http://mcgrawwentworth.com/wp-content/themes/openmind/img/no_image.png" />
+                        <GridListTile key={tile.abbreviation}>
+                            <Link component={RouterLink} color="inherit" to={'/disciplines/' + tile.id}>
+                                <img src="http://mcgrawwentworth.com/wp-content/themes/openmind/img/no_image.png" alt={tile.title + ' logo'} />
                             </Link>
                             <GridListTileBar
                                 title={tile.title}
                                 subtitle={<span>{tile.description}</span>}
                                 actionIcon={
-                                    <Link component={RouterLink} color="inherit" to={'/discipline/' + tile.id}>
+                                    <Link component={RouterLink} color="inherit" to={'/disciplines/' + tile.id}>
                                         <IconButton className={classes.icon} aria-label="Forward" >
                                             <FastForwardIcon />
                                         </IconButton>

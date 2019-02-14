@@ -71,7 +71,7 @@ class Teams extends React.Component {
                             <TableCell align="left">{team.name}</TableCell>
                             <TableCell align="left">{team.abbrebiation}</TableCell>
                             <TableCell align="left">{team.discipline.abbreviation}</TableCell>
-                            <Link component={RouterLink} color="inherit" to={'/teamProfile/' + team.id}>
+                            <Link component={RouterLink} color="inherit" to={'/teams/' + team.id}>
                                 <IconButton aria-label="Forward" >
                                     <FastForwardIcon />
                                 </IconButton>
@@ -105,7 +105,7 @@ class Teams extends React.Component {
                 <Grid container justify='center' direction='row' alignItems='stretch' spacing={16}>
                     <Grid item xs={12}>
                         <Paper className={classes.paper}>
-                            <Typography variant='headline' gutterBottom>
+                            <Typography variant='h5' gutterBottom>
                                 <Translate id="general.title" />
                             </Typography>
                         </Paper>

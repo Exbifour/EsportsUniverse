@@ -41,12 +41,12 @@ class Unfinished extends React.Component {
         return (
             <div className={classes.root}>
                 <Grid container justify='center' direction='row' alignItems='stretch' spacing={16}>
-                    <Grid item xs={10} justify='center'>
+                    <Grid item xs={10}>
                         <Paper className={classes.paper}>
                             <BuildIcon fontSize="large" />
                             <BuildIcon fontSize="large" />
                             <BuildIcon fontSize="large" />
-                            <Typography variant='h3' gutterBottom>
+                            <Typography variant='h4' gutterBottom>
                                 <Translate id="title" />
                             </Typography>
                         </Paper>

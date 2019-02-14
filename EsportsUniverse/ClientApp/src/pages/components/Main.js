@@ -2,17 +2,17 @@ import React from 'react'
 import { Switch, Route } from 'react-router-dom'
 import Disciplines from '../disciplines/Disciplines'
 import DisciplinePage from '../disciplines/DisciplinePage'
-import ManageDisciplines from '../disciplines/ManageDisciplines'
-import DisciplineAdd from '../disciplines/DisciplineAdd'
-import DisciplineEdit from '../disciplines/DisciplineEdit'
+import ManageDisciplines from '../disciplines/manage/ManageDisciplines'
+import DisciplineAdd from '../disciplines/manage/AddDiscipline'
+import DisciplineEdit from '../disciplines/manage/EditDiscipline'
 import Teams from '../teams/Teams'
 import TeamProfile from '../teams/TeamProfile'
-import ManageTeams from '../teams/ManageTeams'
-import AddTeam from '../teams/AddTeam'
-import EditTeam from '../teams/EditTeam'
+import ManageTeams from '../teams/manage/ManageTeams'
+import AddTeam from '../teams/manage/AddTeam'
+import EditTeam from '../teams/manage/EditTeam'
 import Games from '../games/Games'
-import ManageGames from '../games/ManageGames'
-import ManagePlayers from '../players/ManagePlayers'
+import ManageGames from '../games/manage/ManageGames'
+import ManagePlayers from '../players/manage/ManagePlayers'
 import Unfinished from './Unfinished'
 
 
@@ -23,19 +23,21 @@ class Main extends React.Component {
             <main>
                 <Switch>
                     <Route exact path='/' component={ Disciplines } />
+                    <Route path='/disciplines/:id' component={ DisciplinePage } />
+                    <Route exact path='/manage/disciplines' component={ ManageDisciplines } />
+                    <Route exact path='/manage/add/discipline' component={ DisciplineAdd } />
+                    <Route path="/manage/disciplines/:id" component={ DisciplineEdit } />
                     
-                    <Route exact path='/manageDisciplines' component={ ManageDisciplines } />
-                    <Route path="/editDiscipline/:id" component={ DisciplineEdit } />
-                    <Route exact path='/addDiscipline' component={DisciplineAdd} />
-                    <Route path='/discipline/:id' component={DisciplinePage} />
-                    <Route exact path='/teams' component={Teams} />
-                    <Route path='/teamProfile/:id' component={Unfinished} />
-                    <Route exact path='/manageTeams' component={ManageTeams} />
-                    <Route path="/editTeam/:id" component={EditTeam} />
-                    <Route exact path='/addTeam' component={AddTeam} />
-                    <Route exact path='/games' component={Unfinished} />
-                    <Route exact path='/manageGames' component={Unfinished} />
-                    <Route exact path='/managePlayers' component={Unfinished} />
+                    <Route exact path='/teams' component={ Teams } />
+                    <Route path='/teams/:id' component={ Unfinished } />
+                    <Route exact path='/manage/teams' component={ ManageTeams } />
+                    <Route exact path='/manage/add/team' component={ AddTeam } />
+                    <Route path="/manage/teams/:id" component={ EditTeam } />
+
+                    <Route exact path='/games' component={ Games } />
+                    <Route exact path='/manage/games' component={ Unfinished } />
+
+                    <Route exact path='/manage/players' component={ Unfinished } />
                 </Switch>
             </main>
         );

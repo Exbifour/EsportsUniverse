@@ -25,6 +25,37 @@ const styles = theme => ({
 })
 
 class Games extends React.Component {
+    constructor(props) {
+        super(props);
+        
+        this.state = {
+          nick: '',
+          message: '',
+          messages: [],
+          hubConnection: null,
+        };
+      }
+    
+      componentDidMount = () => {
+        const nick = window.prompt('Your name:', 'John');
+    
+        const hubConnection = new HubConnection('api/chat');
+    
+        this.setState({ hubConnection, nick }, () => {
+          this.state.hubConnection
+            .start()
+            .then(() => console.log('Connection started!'))
+            .catch(err => console.log('Error while establishing connection :('));
+    
+          this.state.hubConnection.on('sendToAll', (nick, receivedMessage) => {
+            const text = `${nick}: ${receivedMessage}`;
+            const messages = this.state.messages.concat([text]);
+            this.setState({ messages });
+          });
+        });
+    }
+
+
     render() {
         const { classes } = this.props;
 
@@ -33,27 +64,12 @@ class Games extends React.Component {
                     <Grid container className={classes.firstRow} justify='center' height={400} direction='row' alignItems='stretch' spacing={16}>
                         <Grid item xs={8}>
                             <Paper className={classes.paper}>
-                                <Typography variant='headline' gutterBottom>
+                                <Typography variant='h5' gutterBottom>
                                     You are on a Games page
                                 </Typography>
                             </Paper>
                         </Grid>
-                        <Grid item xs={4}>
-                            <Paper className={classes.paper}>
-                                <Typography variant='body2' gutterBottom>
-                                    Small paper
-                                </Typography>
-                            </Paper>
-                        </Grid>
-                    </Grid>
-                    <Grid container className={classes.secondRow} direction='row' justify='flex-start' alignItems='stretch' spacing={16}>
-                        <Grid item xs={4}>
-                            <Paper className={classes.paper}>
-                                <Typography variant='subheading' gutterBottom>
-                                    I'm here sitting below them.
-                                </Typography>
-                            </Paper>
-                        </Grid>
+                        
                     </Grid>
             </div>
         );
