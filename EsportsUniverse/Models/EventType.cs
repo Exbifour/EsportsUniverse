@@ -5,7 +5,7 @@ using System.Threading.Tasks;
 
 namespace EsportsUniverse.Models
 {
-    public class EventTypes
+    public class EventType
     {
         public int Id { get; set; }
         public int Name { get; set; }

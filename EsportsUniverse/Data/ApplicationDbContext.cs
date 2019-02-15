@@ -15,7 +15,7 @@ namespace EsportsUniverse.Data
         public DbSet<Game> Games { get; set; }
         public DbSet<MatchedTeam> MatchedTeams { get; set; }
         public DbSet<GamePlayerEvent> GamePlayerEvents { get; set; }
-        public DbSet<EventTypes> EventTypes { get; set; }
+        public DbSet<EventType> EventTypes { get; set; }
 
         public ApplicationDbContext(DbContextOptions<ApplicationDbContext> options)
             : base(options)

@@ -16,6 +16,6 @@ namespace EsportsUniverse.Models
 
         public Game Game { get; set; }
         public Player Player { get; set; }
-        public Type Type { get; set; }
+        public EventType Type { get; set; }
     }
 }
