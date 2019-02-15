@@ -64,13 +64,25 @@
         ]
     },
     "profile": {
-        "pastGames": [
-            "Past games",
-            "Останні ігри"
+        "pulse": [
+            "Changes of players pulse",
+            "Зміни у пульсі гравця"
         ],
         "inTeam": [
             "In team",
             "У команді"
+        ],
+        "event": [
+            "Event",
+            "Подія"
+        ],
+        "value": [
+            "Value",
+            "Значення"
+        ],
+        "time": [
+            "time",
+            "час"
         ]
     }
 }

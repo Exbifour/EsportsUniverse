@@ -46,12 +46,12 @@ const styles = theme => ({
         color: theme.palette.text.secondary,
     },
     headingPic: {
-        height: '100%',
-        overflow: 'hidden',
+        width: '140px',
+        height: 'auto',
     },
     headingGrid: {
         width: "100%",
-    }
+    },
 })
 
 class PlayerProfile extends React.Component {
@@ -77,7 +77,7 @@ class PlayerProfile extends React.Component {
         return (
             <Grid container height={140} spacing={4} alignItems="flex-start" justify="flex-start">
                 <Grid item xs={3}>
-                    <img src="http://mcgrawwentworth.com/wp-content/themes/openmind/img/no_image.png" alt={data.nickname + ' photo'} />
+                    <img className={ classes.headingPic } src="http://music.virginia.edu/sites/music.virginia.edu/files/styles/faculty_profile_image/public/default_images/person-placeholder_3.png?itok=dtpqDURH" alt={data.nickname + ' photo'} />
                 </Grid>
                 <Grid item xs={9}>
                     <div className={classes.headingGrid}>
@@ -108,6 +108,35 @@ class PlayerProfile extends React.Component {
         )
     }
 
+    pulse(data) {
+        return (
+            <Table>
+                <TableHead>
+                    <TableRow>
+                        <TableCell align="left">
+                            <Translate id="profile.event" />
+                        </TableCell>
+                        <TableCell align="left">
+                            <Translate id="profile.value" />
+                        </TableCell>
+                        <TableCell align="left">
+                            <Translate id="profile.time" />
+                        </TableCell>
+                    </TableRow>
+                </TableHead>
+                <TableBody>
+                    {data.map(event => (
+                        <TableRow key={event.id} hover={true}>
+                            <TableCell align="left">{event.type.name}</TableCell>
+                            <TableCell align="left">{event.value}</TableCell>
+                            <TableCell align="left">{event.dateTime}</TableCell>
+                        </TableRow>
+                    ))}
+                </TableBody>
+            </Table>
+        )
+    }
+
     render() {
         const { classes } = this.props;
 
@@ -115,13 +144,9 @@ class PlayerProfile extends React.Component {
             ? <Loading />
             : this.renderTitle(this.state.player);
 
-        // let pastGames = this.state.loading
-        //     ? <Loading />
-        //     : this.renderPlayers(this.state.team.players);
-
-        // let games = this.state.loading
-        //     ? <Loading />
-        //     : this.renderPlayers(this.state.team.teamGames);
+        let pulse = this.state.loading
+            ? <Loading />
+            : this.pulse(this.state.player.events);
 
         return (
             <div className={classes.root}>
@@ -130,9 +155,9 @@ class PlayerProfile extends React.Component {
                 </Paper>
                 <Paper className={classes.paperOuter}>
                     <Typography variant='h6' className={classes.centeredText} gutterBottom>
-                        <Translate id="profile.pastGames" />
+                        <Translate id="profile.pulse" />
                     </Typography>
-                    {/* {pastGames} */}
+                    {pulse}
                 </Paper>
             </div>
         );

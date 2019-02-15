@@ -42,6 +42,8 @@ namespace EsportsUniverse.Controllers
             var player = _context.Players
                 .Include(p => p.Team)
                     .ThenInclude(t => t.Discipline)
+                .Include(p => p.Events)
+                    .ThenInclude(e => e.Type)
                 .FirstOrDefault(p => p.Id == id);
 
             if (player == null)

@@ -116,7 +116,7 @@ class TeamProfile extends React.Component {
                 {data.map(tile => (
                     <GridListTile className={classes.gridCell} key={tile.nickname}>
                         <Link component={RouterLink} color="inherit" to={'/players/' + tile.id}>
-                            <img src="http://mcgrawwentworth.com/wp-content/themes/openmind/img/no_image.png" alt={tile.nickname + ' photo'} />
+                            <img height={120} src="http://music.virginia.edu/sites/music.virginia.edu/files/styles/faculty_profile_image/public/default_images/person-placeholder_3.png?itok=dtpqDURH" alt={tile.nickname + ' photo'} />
                         </Link>
                         <GridListTileBar
                             title={tile.nickname}

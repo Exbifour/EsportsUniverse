@@ -53,7 +53,7 @@ namespace EsportsUniverse.Migrations
 
                     b.Property<bool>("IsConvertableToNumber");
 
-                    b.Property<int>("Name");
+                    b.Property<string>("Name");
 
                     b.HasKey("Id");
 
