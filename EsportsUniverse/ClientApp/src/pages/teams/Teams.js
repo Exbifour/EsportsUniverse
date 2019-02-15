@@ -1,12 +1,11 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import { withStyles } from '@material-ui/core/styles';
+
 import Paper from '@material-ui/core/Paper';
 import Grid from '@material-ui/core/Grid';
 import Typography from '@material-ui/core/Typography';
-import { withStyles } from '@material-ui/core/styles';
-import { withLocalize } from "react-localize-redux";
-import teamsTranslations from "../translations/teams.json";
-import { Translate } from "react-localize-redux";
+import Loading from '../components/Loading';
 
 import Table from '@material-ui/core/Table';
 import TableBody from '@material-ui/core/TableBody';
@@ -14,11 +13,15 @@ import TableCell from '@material-ui/core/TableCell';
 import TableHead from '@material-ui/core/TableHead';
 import TableRow from '@material-ui/core/TableRow';
 
-import { Link as RouterLink } from 'react-router-dom'
-import Link from '@material-ui/core/Link';
-
 import IconButton from '@material-ui/core/IconButton';
 import FastForwardIcon from '@material-ui/icons/FastForwardOutlined';
+
+import { withLocalize } from "react-localize-redux";
+import teamsTranslations from "../translations/teams.json";
+import { Translate } from "react-localize-redux";
+
+import { Link as RouterLink } from 'react-router-dom'
+import Link from '@material-ui/core/Link';
 
 const styles = theme => ({
     root: {
@@ -41,7 +44,7 @@ class Teams extends React.Component {
 
         this.state = { teams: [], loading: true };
 
-        fetch('api/Teams')
+        fetch('../api/Teams')
             .then(response => response.json())
             .then(data => {
                 this.setState({ teams: data, loading: false });
@@ -69,7 +72,7 @@ class Teams extends React.Component {
 
                         <TableRow key={team.id} hover={true}>
                             <TableCell align="left">{team.name}</TableCell>
-                            <TableCell align="left">{team.abbrebiation}</TableCell>
+                            <TableCell align="left">{team.abbreviation}</TableCell>
                             <TableCell align="left">{team.discipline.abbreviation}</TableCell>
                             <Link component={RouterLink} color="inherit" to={'/teams/' + team.id}>
                                 <IconButton aria-label="Forward" >
@@ -77,19 +80,9 @@ class Teams extends React.Component {
                                 </IconButton>
                             </Link>
                         </TableRow>
-
-
                     ))}
                 </TableBody>
             </Table>
-        )
-    }
-
-    renderLoading() {
-        return (
-            <Typography variant='h6' gutterBottom>
-                Loading....
-            </Typography>
         )
     }
 
@@ -97,7 +90,7 @@ class Teams extends React.Component {
         const { classes } = this.props;
 
         let table = this.state.loading
-            ? this.renderLoading()
+            ? <Loading />
             : this.renderTable(this.state.teams);
 
         return (

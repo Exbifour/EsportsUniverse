@@ -13,8 +13,9 @@ import TableCell from '@material-ui/core/TableCell';
 import TableHead from '@material-ui/core/TableHead';
 import TableRow from '@material-ui/core/TableRow';
 
-import Button from '@material-ui/core/Button';
+import Fab from '@material-ui/core/Fab';
 import IconButton from '@material-ui/core/IconButton';
+import AddIcon from '@material-ui/icons/AddOutlined'
 import EditIcon from '@material-ui/icons/EditOutlined';
 import DeleteIcon from '@material-ui/icons/DeleteOutlined';
 
@@ -62,7 +63,7 @@ class ManagePlayers extends React.Component {
                     <TableRow>
                         <TableCell align="left">ID</TableCell>
                         <TableCell align="left">
-                            <Translate id="table.nickName" />
+                            <Translate id="table.nickname" />
                         </TableCell>
                         <TableCell align="left">
                             <Translate id="table.firstName" />
@@ -87,9 +88,10 @@ class ManagePlayers extends React.Component {
                             <TableCell component="th" scope="row">
                                 {player.id}
                             </TableCell>
-                            <TableCell align="left">{player.name}</TableCell>
-                            <TableCell align="left">{player.abbrebiation}</TableCell>
-                            <TableCell align="left">{player.team.abbrebiation}</TableCell>
+                            <TableCell align="left">{player.nickname}</TableCell>
+                            <TableCell align="left">{player.firstName}</TableCell>
+                            <TableCell align="left">{player.lastName}</TableCell>
+                            <TableCell align="left">{player.team.name}</TableCell>
                             <TableCell align="left">{player.team.discipline.abbreviation}</TableCell>
                             <TableCell align="left">
                                 <Link component={RouterLink} color="inherit" to={'/manage/players/' + player.id} >
@@ -142,9 +144,10 @@ class ManagePlayers extends React.Component {
                                 <Translate id="manage.title" />
                             </Typography>
                             <Link component={RouterLink} color="inherit" to='/manage/add/player'>
-                                <Button variant="contained" color="primary">
+                                <Fab variant="extended" color="primary" size='medium' aria-label="add">
+                                    <AddIcon className={classes.extendedIcon} />
                                     <Translate id="manage.addButton" />
-                                </Button>
+                                </Fab>
                             </Link>
                         </Paper>
                     </Grid>

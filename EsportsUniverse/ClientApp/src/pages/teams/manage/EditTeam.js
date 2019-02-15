@@ -58,7 +58,7 @@ class EditTeam extends React.Component {
         this.state = { 
             id: "",
             name: "",
-            abbrebiation: "",
+            abbreviation: "",
             disciplineId: "",
             dateAdded: "",
             toManage: false, 
@@ -76,7 +76,7 @@ class EditTeam extends React.Component {
                     this.setState({
                         id: data.id,
                         name: data.name,
-                        abbrebiation: data.abbrebiation,
+                        abbreviation: data.abbreviation,
                         disciplineId: data.disciplineId,
                         dateAdded: data.dateAdded,
                         toManage: false,
@@ -103,13 +103,13 @@ class EditTeam extends React.Component {
     sendData = () => {
         const data = {
             name: this.state.name,
-            abbrebiation: this.state.abbrebiation,
+            abbreviation: this.state.abbreviation,
             disciplineId: this.state.disciplineId,
         };
         if (data.name.length < 1 
-            || data.abbrebiation.length < 1 
-            || data.abbrebiation.length > 8
-            || data.disciplineId == "") {
+            || data.abbreviation.length < 1 
+            || data.abbreviation.length > 8
+            || data.disciplineId === "") {
             alert("Wrong input!");
             return;
         }
@@ -187,8 +187,8 @@ class EditTeam extends React.Component {
                                 id="outlined-name"
                                 label={<Translate id="edit.abbreviation" />}
                                 className={classes.textField}
-                                value={this.state.abbrebiation}
-                                onChange={this.handleChange('abbrebiation')}
+                                value={this.state.abbreviation}
+                                onChange={this.handleChange('abbreviation')}
                                 margin="normal"
                                 variant="standard"
                                 helperText={<Translate id="edit.abbreviationHelper" />}
@@ -205,8 +205,8 @@ class EditTeam extends React.Component {
                                     id: 'discipline',
                                 }}
                             >
-                                <MenuItem value="">
-                                    <em>Select one</em>
+                                <MenuItem disabled value="">
+                                    <Translate id="edit.selectOne" />
                                 </MenuItem>
                                 {disciplines.map(discipline => (
                                     <MenuItem value={discipline.id}>{discipline.title}</MenuItem>

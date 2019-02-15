@@ -25,7 +25,9 @@ namespace EsportsUniverse.Controllers
         [HttpGet]
         public IEnumerable<Player> GetPlayers()
         {
-            return _context.Players.Include(p => p.Team).ThenInclude(t => t.Discipline);
+            return _context.Players
+                .Include(p => p.Team)
+                .ThenInclude(t => t.Discipline);
         }
 
         // GET: api/Players/5
@@ -37,7 +39,10 @@ namespace EsportsUniverse.Controllers
                 return BadRequest(ModelState);
             }
 
-            var player = _context.Players.Include(p => p.Team).FirstOrDefault(p => p.Id == id);
+            var player = _context.Players
+                .Include(p => p.Team)
+                    .ThenInclude(t => t.Discipline)
+                .FirstOrDefault(p => p.Id == id);
 
             if (player == null)
             {

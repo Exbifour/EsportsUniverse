@@ -32,7 +32,7 @@
       "Title",
       "Назва"
     ],
-    "titleAbbreviation": [
+    "titleabbreviation": [
       "Title abbreviation",
       "Скорочена назва"
     ],
@@ -63,7 +63,7 @@
       "Всі дисципліни"
     ],
     "abbreviation": [
-      "Abbreviation",
+      "abbreviation",
       "Скорочено"
     ],
     "company": [
@@ -90,7 +90,7 @@
         "Назва"
       ],
       "abbreviation": [
-        "Abbreviation",
+        "abbreviation",
         "Скорочено"
       ]
     }

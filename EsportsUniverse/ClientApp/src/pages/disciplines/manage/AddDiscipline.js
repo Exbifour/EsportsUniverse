@@ -115,7 +115,7 @@ class DisciplineAdd extends React.Component {
                         <Grid item xs={8}>
                             <TextField
                                 id="outlined-name"
-                                label={<Translate id="edit.titleAbbreviation" />}
+                                label={<Translate id="edit.titleabbreviation" />}
                                 className={classes.textField}
                                 value={this.state.abbreviation}
                                 onChange={this.handleChange('abbreviation')}

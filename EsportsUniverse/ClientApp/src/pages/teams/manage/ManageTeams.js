@@ -13,8 +13,9 @@ import TableCell from '@material-ui/core/TableCell';
 import TableHead from '@material-ui/core/TableHead';
 import TableRow from '@material-ui/core/TableRow';
 
-import Button from '@material-ui/core/Button';
+import Fab from '@material-ui/core/Fab';
 import IconButton from '@material-ui/core/IconButton';
+import AddIcon from '@material-ui/icons/AddOutlined'
 import EditIcon from '@material-ui/icons/EditOutlined';
 import DeleteIcon from '@material-ui/icons/DeleteOutlined';
 
@@ -37,6 +38,9 @@ const styles = theme => ({
         padding: theme.spacing.unit * 2,
         color: theme.palette.text.secondary,
     },
+    extendedIcon: {
+        marhinRight: theme.spacing.unit,
+    }
 })
 
 class ManageTeams extends React.Component {
@@ -85,7 +89,7 @@ class ManageTeams extends React.Component {
                                 {team.id}
                             </TableCell>
                             <TableCell align="left">{team.name}</TableCell>
-                            <TableCell align="left">{team.abbrebiation}</TableCell>
+                            <TableCell align="left">{team.abbreviation}</TableCell>
                             <TableCell align="left">{team.discipline.abbreviation}</TableCell>
                             <TableCell align="left">{team.dateAdded}</TableCell>
                             <TableCell align="left">
@@ -139,9 +143,10 @@ class ManageTeams extends React.Component {
                                 <Translate id="manage.title" />
                             </Typography>
                             <Link component={RouterLink} color="inherit" to='/manage/add/team'>
-                                <Button variant="contained" color="primary">
+                                <Fab variant="extended" color="primary" size='medium' aria-label="add">
+                                    <AddIcon className={classes.extendedIcon} />
                                     <Translate id="manage.addButton" />
-                                </Button>
+                                </Fab>
                             </Link>
                         </Paper>
                     </Grid>

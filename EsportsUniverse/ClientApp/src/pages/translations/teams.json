@@ -47,6 +47,10 @@
     "save": [
       "Save",
       "Зберегти"
+    ],
+    "selectOne": [
+      "Select one",
+      "Виберіть один варіант"
     ]
   },
   "table": {
@@ -55,7 +59,7 @@
       "Назва"
     ],
     "abbreviation": [
-      "Abbreviation",
+      "abbreviation",
       "Скорочено"
     ],
     "dateAdded": [
@@ -75,6 +79,16 @@
     "title": [
       "All teams",
       "Всі команди"
+    ]
+  },
+  "profile": {
+    "players": [
+      "Players",
+      "Гравці"
+    ],
+    "games": [
+      "Past games",
+      "Останні ігри"
     ]
   }
 }

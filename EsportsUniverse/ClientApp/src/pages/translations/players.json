@@ -31,19 +31,23 @@
         "save": [
             "Save",
             "Зберегти"
+        ],
+        "selectOne": [
+            "Select one",
+            "Виберіть один варіант"
         ]
     },
     "table": {
-        "nickName": [
+        "nickname": [
             "Nickname",
             "Нікнейм"
         ],
         "firstName": [
-            "Firstname",
+            "First name",
             "Ім'я"
         ],
         "lastName": [
-            "Lastname",
+            "Last name",
             "Прізвище"
         ],
         "team": [
@@ -57,6 +61,16 @@
         "actions": [
             "Actions",
             "Дії"
+        ]
+    },
+    "profile": {
+        "pastGames": [
+            "Past games",
+            "Останні ігри"
+        ],
+        "inTeam": [
+            "In team",
+            "У команді"
         ]
     }
 }

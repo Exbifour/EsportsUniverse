@@ -1,11 +1,11 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import { withStyles } from '@material-ui/core/styles';
+
 import Paper from '@material-ui/core/Paper';
 import Grid from '@material-ui/core/Grid';
 import Typography from '@material-ui/core/Typography';
-import { withStyles } from '@material-ui/core/styles';
-import { withLocalize } from "react-localize-redux";
-import { Translate } from "react-localize-redux";
+import Loading from '../components/Loading';
 
 import Table from '@material-ui/core/Table';
 import TableBody from '@material-ui/core/TableBody';
@@ -18,6 +18,9 @@ import Link from '@material-ui/core/Link';
 
 import IconButton from '@material-ui/core/IconButton';
 import FastForwardIcon from '@material-ui/icons/FastForwardOutlined';
+
+import { withLocalize } from "react-localize-redux";
+import { Translate } from "react-localize-redux";
 import disciplinesTranslations from "../translations/disciplines.json";
 
 const styles = theme => ({
@@ -41,7 +44,7 @@ class DisciplinePage extends React.Component {
 
         this.state = { teams: [], loading: true };
 
-        fetch('http://localhost:49752/api/Disciplines/' + this.props.match.params.id, { method: "GET" })
+        fetch('../api/Disciplines/' + this.props.match.params.id, { method: "GET" })
             .then(response => response.json())
             .then(recieved => {
                 this.setState({ data: recieved, loading: false });
@@ -66,7 +69,7 @@ class DisciplinePage extends React.Component {
                     {data.map(team => (
                         <TableRow key={team.id} hover={true}>
                             <TableCell align="left">{team.name}</TableCell>
-                            <TableCell align="left">{team.abbrebiation}</TableCell>
+                            <TableCell align="left">{team.abbreviation}</TableCell>
                             <Link component={RouterLink} color="inherit" to={'/teams/' + team.id}>
                                 <IconButton aria-label="Forward" >
                                     <FastForwardIcon />
@@ -76,14 +79,6 @@ class DisciplinePage extends React.Component {
                     ))}
                 </TableBody>
             </Table>
-        )
-    }
-
-    renderLoading() {
-        return (
-            <Typography variant='h6' gutterBottom>
-                Loading....
-            </Typography>
         )
     }
 
@@ -107,11 +102,11 @@ class DisciplinePage extends React.Component {
         const { classes } = this.props;
 
         let table = this.state.loading
-            ? this.renderLoading()
+            ? <Loading />
             : this.renderTeamsTable(this.state.data.teams);
 
         let header = this.state.loading
-            ? this.renderLoading()
+            ? <Loading />
             : this.renderHeader(this.state.data);
         return (
             <div className={classes.root}>

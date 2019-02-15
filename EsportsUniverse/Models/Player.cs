@@ -22,5 +22,7 @@ namespace EsportsUniverse.Models
         [Required]
         public int TeamId { get; set; }
         public Team Team { get; set; }
+
+        public virtual IEnumerable<GamePlayerEvent> Events { get; set; }
     }
 }
