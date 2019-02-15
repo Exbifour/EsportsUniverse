@@ -1,0 +1,94 @@
+{
+  "manage": {
+    "title": [
+      "Teams management",
+      "Керування командами"
+    ],
+    "addButton": [
+      "Add",
+      "Додати"
+    ],
+    "removeButton": [
+      "Remove",
+      "Видалити"
+    ],
+    "editButton": [
+      "Edit",
+      "Редагувати"
+    ]
+  },
+  "add": {
+    "title": [
+      "Add new team",
+      "Додаванння нової команди"
+    ]
+  },
+  "edit": {
+    "title": [
+      "Edit team data",
+      "Редагування команди"
+    ],
+    "name": [
+      "Team name",
+      "Назва команди"
+    ],
+    "abbreviation": [
+      "Name abbreviation",
+      "Скорочена назва"
+    ],
+    "abbreviationHelper": [
+      "Not longer than 8 symbols",
+      "Не довше 8 символів"
+    ],
+    "discipline": [
+      "Discipline",
+      "Дисципліна"
+    ],
+    "save": [
+      "Save",
+      "Зберегти"
+    ],
+    "selectOne": [
+      "Select one",
+      "Виберіть один варіант"
+    ]
+  },
+  "table": {
+    "name": [
+      "Name",
+      "Назва"
+    ],
+    "abbreviation": [
+      "Abbreviation",
+      "Скорочено"
+    ],
+    "dateAdded": [
+      "Date added",
+      "Дата додавання"
+    ],
+    "discipline": [
+      "Discipline",
+      "Дисципліна"
+    ],
+    "actions": [
+      "Actions",
+      "Дії"
+    ]
+  },
+  "general": {
+    "title": [
+      "All teams",
+      "Всі команди"
+    ]
+  },
+  "profile": {
+    "players": [
+      "Players",
+      "Гравці"
+    ],
+    "games": [
+      "Past games",
+      "Останні ігри"
+    ]
+  }
+}

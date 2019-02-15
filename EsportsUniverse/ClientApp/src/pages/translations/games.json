@@ -1,0 +1,86 @@
+{
+    "manage": {
+      "title": [
+        "Games management",
+        "Керування іграми"
+      ],
+      "addButton": [
+        "Add",
+        "Додати"
+      ],
+      "removeButton": [
+        "Remove",
+        "Видалити"
+      ],
+      "editButton": [
+        "Edit",
+        "Редагувати"
+      ]
+    },
+    "add": {
+      "title": [
+        "Add new game",
+        "Додаванння нової гри"
+      ]
+    },
+    "edit": {
+      "title": [
+        "Edit game data",
+        "Редагування гри"
+      ],
+      "team1": [
+        "Team 1",
+        "Команда 1"
+      ],
+      "team2": [
+        "Team 2",
+        "Команда 2"
+      ],
+      "discipline": [
+        "Discipline",
+        "Дисципліна"
+      ],
+      "save": [
+        "Save",
+        "Зберегти"
+      ],
+      "selectOne": [
+        "Select one",
+        "Виберіть один варіант"
+      ]
+    },
+    "table": {
+      "name": [
+        "Name",
+        "Назва"
+      ],
+      "disciplineAbbreviation": [
+        "Discipline",
+        "Дисципліна"
+      ],
+      "dateStart": [
+        "Date start",
+        "Дата початку"
+      ],
+      "timeStart": [
+        "Time start",
+        "Час початку"
+      ],
+      "actions": [
+        "Actions",
+        "Дії"
+      ]
+    },
+    "general": {
+      "title": [
+        "All teams",
+        "Всі ігри"
+      ]
+    },
+    "profile": {
+      "players": [
+        "Players",
+        "Гравці"
+      ]
+    }
+  }

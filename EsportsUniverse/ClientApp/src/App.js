@@ -1,20 +1,38 @@
-import React, { Component } from 'react';
-import { Route } from 'react-router';
-import { Layout } from './components/Layout';
-import { Home } from './components/Home';
-import { FetchData } from './components/FetchData';
-import { Counter } from './components/Counter';
+import React from 'react';
+// import PropTypes from 'prop-types';
+import withRoot from './withRoot';
+import Header from './pages/components/Header';
+import Main from './pages/components/Main';
+import { withLocalize } from "react-localize-redux";
+// import globalTranslations from "./translations/global.json";
+import { renderToStaticMarkup } from "react-dom/server";
 
-export default class App extends Component {
-  displayName = App.name
+class App extends React.Component {
+    constructor(props) {
+        super(props);
 
-  render() {
-    return (
-      <Layout>
-        <Route exact path='/' component={Home} />
-        <Route path='/counter' component={Counter} />
-        <Route path='/fetchdata' component={FetchData} />
-      </Layout>
-    );
-  }
+        this.props.initialize({
+            languages: [
+                { name: "English", code: "en" },
+                { name: "Українська", code: "ua" }
+            ],
+            // translation: globalTranslations,
+            options: { renderToStaticMarkup }
+        });
+    }
+
+    render() {
+        return (
+            <div>
+                <Header />
+                <Main />
+            </div>
+        );
+    }
 }
+
+// App.propTypes = {
+//     classes: PropTypes.object.isRequired,
+// };
+
+export default withLocalize(withRoot(App));

@@ -1,0 +1,98 @@
+{
+  "manage": {
+    "title": [
+      "Discipline management",
+      "Керування дисциплінами"
+    ],
+    "addButton": [
+      "Add",
+      "Додати"
+    ],
+    "removeButton": [
+      "Remove",
+      "Видалити"
+    ],
+    "editButton": [
+      "Edit",
+      "Редагувати"
+    ]
+  },
+  "add": {
+    "title": [
+      "Add new discipline",
+      "Додаванння нової дисципліни"
+    ]
+  },
+  "edit": {
+    "title": [
+      "Edit discipline data",
+      "Редагування дисципліни"
+    ],
+    "gameTitle": [
+      "Title",
+      "Назва"
+    ],
+    "titleabbreviation": [
+      "Title abbreviation",
+      "Скорочена назва"
+    ],
+    "abbreviationHelper": [
+      "Not longer than 8 symbols",
+      "Не довше 8 символів"
+    ],
+    "description": [
+      "Description",
+      "Опис"
+    ],
+    "maxNumberOfPlayers": [
+      "Max number of players in team",
+      "Максимальна кількість гравців у команді"
+    ],
+    "save": [
+      "Save",
+      "Зберегти"
+    ]
+  },
+  "table": {
+    "title": [
+      "Title",
+      "Назва"
+    ],
+    "subheader": [
+      "All disciplines",
+      "Всі дисципліни"
+    ],
+    "abbreviation": [
+      "Abbreviation",
+      "Скорочено"
+    ],
+    "company": [
+      "Company",
+      "Компанія"
+    ],
+    "dateAdded": [
+      "Date added",
+      "Дата додавання"
+    ],
+    "actions": [
+      "Actions",
+      "Дії"
+    ]
+  },
+  "page": {
+    "table": {
+      "title": [
+        "Teams",
+        "Команди"
+      ],
+      "name": [
+        "Name",
+        "Назва"
+      ],
+      "abbreviation": [
+        "Abbreviation",
+        "Скорочено"
+      ]
+    }
+  }
+}
