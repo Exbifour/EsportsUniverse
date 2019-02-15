@@ -15,7 +15,7 @@ import PlayerProfile from '../players/PlayerProfile'
 import Games from '../games/Games'
 import ManageGames from '../games/manage/ManageGames'
 import GamePage from '../games/GamePage'
-import GameEdit from '../games/manage/GameEdit'
+import EditGame from '../games/manage/EditGame'
 
 
 class Main extends React.Component {
@@ -37,7 +37,9 @@ class Main extends React.Component {
                     <Route path="/manage/teams/:id" render={(props) => <EditTeam {...props} editExisting={true} />} />
 
                     <Route exact path='/games' component={ Games } />
-                    <Route exact path='/manage/games' component={ Unfinished } />
+                    <Route exact path='/manage/games' component={ ManageGames } />
+                    <Route exact path='/manage/add/game' component={ EditGame } />
+                    <Route exact path='/manage/games/:id' render={(props) => <EditGame {...props} editExisting={true} />} />
 
                     <Route path='/players/:id' component={ PlayerProfile } />
                     <Route exact path='/manage/players' component={ ManagePlayers } />

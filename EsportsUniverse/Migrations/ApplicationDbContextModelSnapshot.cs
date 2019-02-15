@@ -45,6 +45,80 @@ namespace EsportsUniverse.Migrations
                     b.ToTable("Disciplines");
                 });
 
+            modelBuilder.Entity("EsportsUniverse.Models.EventType", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<bool>("IsConvertableToNumber");
+
+                    b.Property<int>("Name");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("EventTypes");
+                });
+
+            modelBuilder.Entity("EsportsUniverse.Models.Game", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<int>("DisciplineId");
+
+                    b.Property<bool>("IsFinished");
+
+                    b.Property<DateTime>("StartDateTime");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("DisciplineId");
+
+                    b.ToTable("Games");
+                });
+
+            modelBuilder.Entity("EsportsUniverse.Models.GamePlayerEvent", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<DateTime>("DateTime");
+
+                    b.Property<int?>("GameId");
+
+                    b.Property<int>("PlayerId");
+
+                    b.Property<int>("TypeId");
+
+                    b.Property<string>("Value");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("GameId");
+
+                    b.HasIndex("PlayerId");
+
+                    b.HasIndex("TypeId");
+
+                    b.ToTable("GamePlayerEvents");
+                });
+
+            modelBuilder.Entity("EsportsUniverse.Models.MatchedTeam", b =>
+                {
+                    b.Property<int>("GameId");
+
+                    b.Property<int>("TeamId");
+
+                    b.HasKey("GameId", "TeamId");
+
+                    b.HasIndex("TeamId");
+
+                    b.ToTable("MatchedTeams");
+                });
+
             modelBuilder.Entity("EsportsUniverse.Models.Player", b =>
                 {
                     b.Property<int>("Id")
@@ -78,7 +152,7 @@ namespace EsportsUniverse.Migrations
                         .ValueGeneratedOnAdd()
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-                    b.Property<string>("Abbrebiation");
+                    b.Property<string>("Abbreviation");
 
                     b.Property<DateTime>("DateAdded");
 
@@ -91,6 +165,44 @@ namespace EsportsUniverse.Migrations
                     b.HasIndex("DisciplineId");
 
                     b.ToTable("Teams");
+                });
+
+            modelBuilder.Entity("EsportsUniverse.Models.Game", b =>
+                {
+                    b.HasOne("EsportsUniverse.Models.Discipline", "Discipline")
+                        .WithMany()
+                        .HasForeignKey("DisciplineId")
+                        .OnDelete(DeleteBehavior.Cascade);
+                });
+
+            modelBuilder.Entity("EsportsUniverse.Models.GamePlayerEvent", b =>
+                {
+                    b.HasOne("EsportsUniverse.Models.Game", "Game")
+                        .WithMany("Events")
+                        .HasForeignKey("GameId");
+
+                    b.HasOne("EsportsUniverse.Models.Player", "Player")
+                        .WithMany("Events")
+                        .HasForeignKey("PlayerId")
+                        .OnDelete(DeleteBehavior.Cascade);
+
+                    b.HasOne("EsportsUniverse.Models.EventType", "Type")
+                        .WithMany("Events")
+                        .HasForeignKey("TypeId")
+                        .OnDelete(DeleteBehavior.Cascade);
+                });
+
+            modelBuilder.Entity("EsportsUniverse.Models.MatchedTeam", b =>
+                {
+                    b.HasOne("EsportsUniverse.Models.Game", "Game")
+                        .WithMany("MatchedTeams")
+                        .HasForeignKey("GameId")
+                        .OnDelete(DeleteBehavior.Cascade);
+
+                    b.HasOne("EsportsUniverse.Models.Team", "Team")
+                        .WithMany("MatchedTeams")
+                        .HasForeignKey("TeamId")
+                        .OnDelete(DeleteBehavior.Cascade);
                 });
 
             modelBuilder.Entity("EsportsUniverse.Models.Player", b =>

@@ -48,7 +48,7 @@ class ManagePlayers extends React.Component {
 
         this.state = { players: [], loading: true };
 
-        fetch('../api/Players')
+        fetch('../../api/Players')
             .then(response => response.json())
             .then(data => {
                 this.setState({ players: data, loading: false });

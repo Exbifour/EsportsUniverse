@@ -88,11 +88,11 @@ class Header extends React.Component {
                                 <Translate id="header.teams" />
                             </Button>
                         </Link>
-                        <Link component={RouterLink} color="inherit" to='/games'>
+                        {/* <Link component={RouterLink} color="inherit" to='/games'>
                             <Button variant="text" size='large' color="inherit" className={classes.navigation}>
                                 <Translate id="header.games" />
                             </Button>
-                        </Link>
+                        </Link> */}
 
                         <div className={classes.grow}></div>
 
@@ -134,11 +134,11 @@ class Header extends React.Component {
                                             <Translate id="header.manageTeams" />
                                         </MenuItem>
                                     </Link>
-                                    <Link component={RouterLink} color="inherit" to='/manage/games'>
+                                    {/* <Link component={RouterLink} color="inherit" to='/manage/games'>
                                         <MenuItem onClick={this.handleClose}>
                                             <Translate id="header.manageGames" />
                                         </MenuItem>
-                                    </Link>
+                                    </Link> */}
                                 </Menu>
                             </div>
                         )}

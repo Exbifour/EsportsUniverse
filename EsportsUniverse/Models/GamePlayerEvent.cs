@@ -8,7 +8,7 @@ namespace EsportsUniverse.Models
     public class GamePlayerEvent
     {
         public int Id { get; set; }
-        public int GameId { get; set; }
+        public int? GameId { get; set; }
         public int PlayerId { get; set; }
         public int TypeId { get; set; }
         public string Value { get; set; }

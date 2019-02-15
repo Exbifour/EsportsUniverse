@@ -74,7 +74,7 @@ class EditPlayer extends React.Component {
                 .then(data => {
                     this.setState({
                         id: data.id,
-                        nickname: data.name,
+                        nickname: data.nickname,
                         firstName: data.firstName,
                         lastName: data.lastName,
                         teamId: data.teamId,
